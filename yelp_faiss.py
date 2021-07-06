@@ -41,17 +41,17 @@ def generate_vectors(model: DAE, batches: List[List[str]]) -> torch.Tensor:
 if __name__ == "__main__":
 
     # Stage data.
-    path = "text_autoencoders/data/yelp/sentiment/1000.pos"
+    pos_path = "text_autoencoders/data/yelp/sentiment/1000.pos"
     vocab = Vocab("text_autoencoders/checkpoints/yelp/daae/vocab.txt")
     device = torch.device("cuda:0")
     # batches, _ = get_batches(open(path).readlines(), vocab, 64, device)
-    batches, _ = get_batches(load_sentiment(path), vocab, 64, device)
+    pos_batches, _ = get_batches(load_sentiment(pos_path), vocab, 64, device)
 
     # Init Model.
     checkpoint_path = "text_autoencoders/checkpoints/yelp/daae/model.pt"
     model = init_model(checkpoint_path, vocab)
 
-    vectors = generate_vectors(model, batches)
+    vectors = generate_vectors(model, pos_batches)
 
     # Load Faiss
     res = faiss.StandardGpuResources()
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     print(vectors.numpy()[5].shape)
     d, i = gpu_index_flat.search(np.expand_dims(vectors.numpy()[5], 0), 5)
 
-    with open(path) as f:
+    with open(pos_path) as f:
         lines = f.readlines()
         for n in i.squeeze():
             print(f"{n}: {lines[n][:-3]}")

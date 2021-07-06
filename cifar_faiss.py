@@ -36,7 +36,7 @@ if __name__ == "__main__":
     device = torch.device("cuda:0")
 
     # Init Models.
-    encoder_path = "models/encoderfinal_nonorm_two.pth"
+    encoder_path = "models/encoderfinal_model.pth"
     encoder = ConvEncoder().to(device)
     encoder.load_state_dict(torch.load(encoder_path))
     encoder.eval()

@@ -102,7 +102,7 @@ if __name__ == "__main__":
     os.makedirs("savestate", exist_ok=True)
     os.makedirs("models", exist_ok=True)
     trainer = AutoEncoderTrainer(
-        epochs=100, batch_size=128, learning_rate=1e-4, output_name="nonorm_three"
+        epochs=100, batch_size=128, learning_rate=1e-4, output_name="model"
     )
     trainer.train()
     save(trainer.encoder.state_dict(), f"models/encoderfinal_{trainer.output_path}")

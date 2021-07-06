@@ -21,10 +21,9 @@ app.title = "Similarity Search"
 # Init Encoder
 encoder = ConvEncoder().cpu()
 encoder.load_state_dict(
-    torch.load("models/encoderfinal_nonorm_two.pth", map_location=torch.device("cpu"))
+    torch.load("models/encoderfinal_model.pth", map_location=torch.device("cpu"))
 )
 encoder.eval()
-
 
 # if not using a GPU, just call FAISS_INDEX = faiss.read_index
 FAISS_INDEX = faiss.index_cpu_to_gpu(
