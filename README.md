@@ -8,7 +8,7 @@ unlabeled and/or unstructured data being collected (usually long before ML or an
 thought to put effort into labeling or structuring for later analysis)? How often
 do you hit a wall like the following when advocating for an effort?
 
-* I wonder what the prevalance rate of X is? If only it didn't too long to explore and may not add value.
+* I wonder what the prevalence rate of X is? If only it didn't too long to explore and may not add value.
 * We have a problem we need to sort out and I only have one example.  Give me a few
   weeks to blindly sift through looking for more examples for modeling!
 * It would add a lot of value to be able to detect X, but the effort to find the data
@@ -38,9 +38,9 @@ ensure you are using the same dependencies and versions as I am.  If you choose 
 
 ### CIFAR-10 Stack:  The autoencoder.
 
-The idea of this resuable stack depends on the ability to turn data into a vector that responds to a distance metric. 
-If you are not famailiar with variational autoencoders you can read about them [here](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73). 
-Since CIFAR-10 is an image corpus, an autoendocer that utilizes convolutional layers makes sense.  The amount of 
+The idea of this reusable stack depends on the ability to turn data into a vector that responds to a distance metric. 
+If you are not familiar with variational autoencoders you can read about them [here](https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73). 
+Since CIFAR-10 is an image corpus, an autoencoder that utilizes convolutional layers makes sense.  The amount of 
 layers and the size of the encoder output vector are things that should be tweaked in accordance with your data. 
 What constitutes as "different" depends on the business need and the type of data itself.  Is "different" 
 a car vs a can of beer? "Different" may be a bone-break vs healthy or a noise artifact.  
@@ -49,11 +49,11 @@ smaller differences.
 
 ![Encoder stack](screenshots/autoencoder.png)
 
-An autoencoder is two nerual networks that are opposites of each other. The input network is refered to as the encoder 
+An autoencoder is two neural networks that are opposites of each other. The input network is referred to as the encoder 
 and the output network the decoder.  The encoder takes an image as an input and outputs a vector.  The decoder 
 takes that vector as an input and outputs an image.  The networks are trained together in hopes that the 
 decoder does a decent job at creating an image from the vector.  When this happens, that means the important 
-information about the image has been captured by the vector and will responde to similarity search.
+information about the image has been captured by the vector and will respond to similarity search.
 
 My convolutional autoencoder is [here](https://github.com/pdoyle5000/full-stack-similarity-search/blob/main/autoencoder/autoencoder.py).
 
